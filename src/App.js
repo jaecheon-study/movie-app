@@ -1,6 +1,8 @@
 import React from 'react';
 // 속성 값의 타입 지정 라이브러리
 import PropTypes from 'prop-types'
+// 네트워크 관련 라이브러리. (웹 플레폼에서 많이 사용되는 라이브러리)
+import axios from "axios";
 
 // 클래스 컴포넌트
 export default class App extends React.Component {
@@ -11,12 +13,20 @@ export default class App extends React.Component {
         isLoading: true
     };
 
+    getMovies = async () => {
+        // get 방식으로 해당 url 불러옴
+        const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json");
+    }
+
+
     // react LifeCycle
     // 페이지가 시작 될 때
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({isLoading: false});
-        }, 6000)
+        // setTimeout(() => {
+        //     this.setState({isLoading: false});
+        // }, 6000)
+        this.getMovies();
+        console.log(this.getMovies());
     }
 
     // 렌더링 부분
