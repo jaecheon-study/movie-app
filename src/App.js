@@ -23,6 +23,31 @@ export default class App extends React.Component {
         }));
       
     };
+
+    // shouldComponentUpdate(nextProps, nextState, nextContext) {
+    // }
+
+    // react LifeCycle
+    // 페이지가 시작 될 때
+    componentDidMount() {
+        console.log("componentDidMount");
+    }
+    
+    // 상태가 업데이트 될 때
+    componentDidUpdate() {
+        console.log("componentDidUpdate");
+    }
+    
+    // 화면이 종료 될 때 즉 페이지가 종료 될 때
+    componentWillUnmount() {
+        console.log("componentWillUnmount");
+    }
+    
+    // 에러 발생시
+    componentDidCatch() {
+        console.log("componentDidCatch");
+    }
+
     render() {
         // 상수 선언 부분 또는 변수 return을 만나기전
         // return은 화면에 뿌려주는 역할
