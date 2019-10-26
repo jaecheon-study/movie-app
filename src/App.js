@@ -1,22 +1,49 @@
 import React from 'react';
-// 만들어진 컴포넌트 불러옴
-import Potato from "./Potato";
 
-// 파라미터가 있는 컴포넌트
-// 파라미터가 없는 컴포넌트는 같은 내용만 재사용 가능.
-// 파라미터가 있는 컴포넌트는 다른 내용으로도 재사용 가능.
-function Food({favourite}) {
-    return <h1>I like {favourite}</h1>
+function Food({name, img}) {
+    return (
+        <div>
+            <h2>I like {name}</h2>
+            <img src = {img} />
+        </div>
+    );
 }
+
+const foodILike = [
+    {
+        name: "Kimchi",
+        image:
+            "http://aeriskitchen.com/wp-content/uploads/2008/09/kimchi_bokkeumbap_02-.jpg"
+    },
+    {
+        name: "Samgyeopsal",
+        image:
+            "https://3.bp.blogspot.com/-hKwIBxIVcQw/WfsewX3fhJI/AAAAAAAAALk/yHxnxFXcfx4ZKSfHS_RQNKjw3bAC03AnACLcBGAs/s400/DSC07624.jpg"
+    },
+    {
+        name: "Bibimbap",
+        image:
+            "http://cdn-image.myrecipes.com/sites/default/files/styles/4_3_horizontal_-_1200x900/public/image/recipes/ck/12/03/bibimbop-ck-x.jpg?itok=RoXlp6Xb"
+    },
+    {
+        name: "Doncasu",
+        image:
+            "https://s3-media3.fl.yelpcdn.com/bphoto/7F9eTTQ_yxaWIRytAu5feA/ls.jpg"
+    },
+    {
+        name: "Kimbap",
+        image:
+            "http://cdn2.koreanbapsang.com/wp-content/uploads/2012/05/DSC_1238r-e1454170512295.jpg"
+    }
+];
 
 function App() {
   //  retrun은 html이 들어가야함.
   return (
     <div className="App">
-        <h1>Test</h1>
-        <Potato />
-        <Food favourite = "juice"/>
-        <Food favourite = "coffee" />
+        {foodILike.map(dish => (
+           <Food name={dish.name} img={dish.image}/>
+        ))}
     </div>
   );
 }
