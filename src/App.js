@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 // 네트워크 관련 라이브러리. (웹 플레폼에서 많이 사용되는 라이브러리)
 import axios from "axios";
 import Movie from './Movie'
+import "./app.css"
 
 // 클래스 컴포넌트
 export default class App extends React.Component {
@@ -19,7 +20,7 @@ export default class App extends React.Component {
         // const movies = await axios.get("https://yts-proxy.now.sh/list_movies.json");
         const {
             data: {
-                data: { movies }
+                data: {movies}
             }
         } = await axios.get("https://yts-proxy.now.sh/list_movies.json?sort_by=rating");
         this.setState({movies, isLoading: false});
@@ -43,20 +44,27 @@ export default class App extends React.Component {
 
         // return은 화면에 뿌려주는 역할
         return (
-            <div>
-            { isLoading ? "Loading..."
-                    : movies.map( movie => (
-                        <Movie
-                            key={movie.id}
+
+            <section className="container">
+                {isLoading ? (
+                    <div className="loader">
+                        <span>Loading...</span>
+                    </div>
+                ) : (
+                    <div className="movies">
+                        {movies.map(movie => (
+                            <Movie
+                            key = {movie.id}
                             id = {movie.id}
-                            year={movie.year}
-                            title={movie.title}
-                            summary={movie.summary}
-                            poster={movie.small_cover_image}
-                        />
-                    ))
-                }
-            </div>
+                            year = {movie.year}
+                            title = {movie.title} 
+                            summary = {movie.summary}
+                            poster = {movie.medium_cover_image}
+                            />
+                        ))}
+                    </div>
+                )}
+            </section>
         );
     }
 }
