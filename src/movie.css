@@ -35,3 +35,14 @@
     color: #2c2c2c;
     font-weight: 600;
 }
+
+.movie .movie_genres {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin: 5px 0px;
+}
+
+.movie .genres_genre {
+    margin-right: 10px;
+}
